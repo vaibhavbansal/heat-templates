@@ -16,31 +16,6 @@ meta-data:
     tattoo: https://600861890ddb34a8670a-744765205721eed93c384dae790e86aa.ssl.cf2.rackcdn.com/wordpress-tattoo.png
     icon-20x20: https://600861890ddb34a8670a-744765205721eed93c384dae790e86aa.ssl.cf2.rackcdn.com/wordpress-icon-20x20.png
     rackspace-supported: true
-    display-hints:
-      flavor:
-       group: server
-       order: 3
-       label: Server Size
-      server_hostname:
-       group: server
-       order: 1
-       label: Server Name
-      image:
-       group: server
-       order: 2
-       label: Operating System
-      db_name:
-       group: database
-       order: 1
-       label: Database Name
-      db_password:
-       group: database
-       order: 2
-       label: Database Password
-      db_admin_password:
-       group: database
-       order: 3
-       label: Database Admin Password
 
 documentation:
   abstract: |
@@ -175,11 +150,19 @@ parameters:
         max: 64
     - allowedPattern: "[a-zA-Z][a-zA-Z0-9]*"
       description: must begin with a letter and contain only alphanumeric characters.
+    display-hints:
+      group: server
+      order: 1
+      label: Server Name
     
   image:
     type: String
     default: Windows Server 2012
     description: Windows Server Image
+    display-hints:
+      group: server
+      order: 2
+      label: Operating System
   
   flavor:
     type: String
@@ -192,6 +175,10 @@ parameters:
       - 15GB Standard Instance
       - 30GB Standard Instance
       description: must be a valid Rackspace Cloud Server flavor.
+    display-hints:
+      group: server
+      order: 3
+      label: Server Size
   
   db_name:
     type: String
@@ -203,16 +190,28 @@ parameters:
         max: 64
     - allowedPattern: "[a-zA-Z][a-zA-Z0-9]*"
       description: must begin with a letter and contain only alphanumeric characters.
+    display-hints:
+      group: database
+      order: 1
+      label: Database Name
   
   db_password:
     type: String
     default: verybadpass_123
     description: Database password
+    display-hints:
+      group: database
+      order: 2
+      label: Database Password
     
   db_admin_password:
     type: String
     default: verybadpass_123
     description: Database Admin password
+    display-hints:
+      group: database
+      order: 3
+      label: Database Admin Password
 
 
 resources:
@@ -255,5 +254,3 @@ outputs:
         params:
           "%ip%": { get_attr: [ rs_windows_server, PublicIp ] }
     description: URL for Wordpress site
-
-
