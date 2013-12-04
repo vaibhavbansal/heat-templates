@@ -3,7 +3,8 @@
     {
       "id": 1,
       "name": "Single Instance Redis Server (Linux)",
-      "url": "https://raw.github.com/heat-ci/heat-templates/master/prod/redis.template"
+      "url": "https://raw.github.com/heat-ci/heat-templates/master/prod/redis.template",
+      "meta_url": "https://raw.github.com/vaibhavbansal/heat-templates/master/prod/redis.metadata"
     },
     {
       "id": 2,
